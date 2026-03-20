@@ -5,7 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,7 +17,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'  # Excalidraw 要求 Node.js 18+
+          node-version: '20'  # 关键修改：从 '18' 改为 '20' 或更高
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
